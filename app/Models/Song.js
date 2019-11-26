@@ -17,14 +17,14 @@ export default class Song {
     <h4>${this.artist} - ${this.album}</h4>
     <h3>$${this.price}</h3>
     <div class="row">
-    <div class="col"
-    <audio controls id="music">
+    <div class="col">
+    <audio controls>
     <source src="${this.preview}" type="audio/mp3">
     </audio>
     </div>
     </div>
     <div class="row">
-    <div class="col"
+    <div class="col">
     <button type="button" class="btn btn-primary" onclick="app.songsController.addSong('${this._id}')">Add</button>
     </div>
     </div>
@@ -40,7 +40,7 @@ export default class Song {
     <h3>$${this.price}</h3>
     <div class="row">
     <div class="col">
-    <audio controls id="music">
+    <audio controls>
     <source src="${this.preview}" type="audio/mp3">
     </audio>
     </div>
