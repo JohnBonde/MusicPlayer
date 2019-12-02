@@ -12,15 +12,12 @@ export default class Song {
 
   get Template() {
     return `
-    <img src="${this.albumArt}" alt="">
+    <img src="${this.albumArt}" alt="" onclick="app.songsController.songPreview('${this._id}')">
     <h1>${this.title}</h1>
     <h4>${this.artist} - ${this.album}</h4>
     <h3>$${this.price}</h3>
     <div class="row">
     <div class="col">
-    <audio controls>
-    <source src="${this.preview}" type="audio/mp3">
-    </audio>
     </div>
     </div>
     <div class="row">
@@ -34,15 +31,12 @@ export default class Song {
 
   get playlistTemplate() {
     return `
-    <img src="${this.albumArt}" alt="">
+    <img src="${this.albumArt}" alt="" onclick="app.songsController.playlistPreview('${this._id}')">
     <h1>${this.title}</h1>
     <h4>${this.artist} - ${this.album}</h4>
     <h3>$${this.price}</h3>
     <div class="row">
     <div class="col">
-    <audio controls>
-    <source src="${this.preview}" type="audio/mp3">
-    </audio>
     </div>
     </div>
     <div class="row">
@@ -52,5 +46,12 @@ export default class Song {
     </div>
     <br></br>
         `;
+  }
+  get previewTemplate() {
+    return `
+    <audio controls>
+    <source src="${this.preview}" type="audio/mp3">
+    </audio>
+    `
   }
 }

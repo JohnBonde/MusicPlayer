@@ -1,6 +1,5 @@
 import store from "../store.js";
 import SongService from "../Services/SongsService.js";
-
 //Private
 /**Draws the Search results to the page */
 function _drawResults() {
@@ -16,7 +15,12 @@ function _drawPlaylist() {
   playlists.forEach(playlist => template += playlist.playlistTemplate)
   document.querySelector("#playlist").innerHTML = template
 }
+function _drawSongPreview() {
 
+}
+function _drawPlaylistPreview() {
+
+}
 //Public
 export default class SongsController {
   constructor() {
@@ -52,5 +56,13 @@ export default class SongsController {
   removeSong(id) {
     SongService.removeSong(id);
     _drawPlaylist()
+  }
+  songPreview(id) {
+    let song = store.State.songs.find(s => s._id == id);
+    document.getElementById('preview').innerHTML = song.Template + song.previewTemplate
+  }
+  playlistPreview(id) {
+    let playlists = store.State.playlist.find(p => p._id == id);
+    document.getElementById('preview').innerHTML = playlists.playlistTemplate + playlists.previewTemplate
   }
 }

@@ -8,9 +8,6 @@ let _sandBox = axios.create({
 });
 
 class SongsService {
-  playAudio(preview) {
-
-  }
   constructor() {
     // NOTE this will get your songs on page load
     this.getMySongs();
@@ -59,8 +56,10 @@ class SongsService {
     //TODO you only have an id, you will need to find it in the store before you can post it
     //TODO After posting it what should you do?
     let song = store.State.songs.find(s => s._id == id);
-    _sandBox.post("", song).then(res => {
-      this.getMySongs()
+    _sandBox.post(song).then(res => {
+      let newSong = new Song(res.data.data);
+      let playlist = [newSong, ...store.State.playlist];
+      store.commit("playlist", playlist)
     }).catch(err => {
       console.error(err);
     })
@@ -73,7 +72,7 @@ class SongsService {
    */
   removeSong(id) {
     //TODO Send the id to be deleted from the server then update the store
-    _sandBox.delete("" + id).then(res => {
+    _sandBox.delete(id).then(res => {
       this.getMySongs()
     }).catch(err => {
       console.error(err);

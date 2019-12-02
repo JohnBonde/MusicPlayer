@@ -1,0 +1,18 @@
+#songs {
+  height: 100vh;
+  overflow: auto;
+}
+#playlist {
+    height: 100vh;
+    overflow: auto;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+#preview {
+  display: flexbox;
+}
+img {
+  max-height: 100%;
+  width: auto
+}
